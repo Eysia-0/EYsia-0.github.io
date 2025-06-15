@@ -138,15 +138,39 @@
             }
         }
 
+        .header-container {
+            position: fixed; /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 30px; /* 初始内边距 */
+            display: flex;
+            justify-content: space-between; /* Logo 和导航栏左右分布 */
+            align-items: center;
+            z-index: 1000; /* 确保在最上层 */
+            transition: padding 0.5s ease, background 0.5s ease; /* 过渡效果，改为 background */
+            /* background-color: transparent; */ /* 移除纯透明背景 */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); /* 顶部轻微加深渐变 */
+        }
+
+        .header-container.scrolled {
+            padding: 5px 20px; /* 滚动后减小内边距 */
+            background: #FFFFFF; /* 滚动后背景变为纯白色 */
+        }
+
         .logo {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 700px;
+            /* position: absolute; */ /* 不再需要绝对定位 */
+            /* top: 30px; */
+            /* left: 30px; */
+            width: 600px; /* 增大初始宽度 */
             height: auto;
-            z-index: 100;
+            /* z-index: 100; */
             opacity: 0.9;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, width 0.5s ease; /* 添加宽度过渡 */
+        }
+
+        .header-container.scrolled .logo {
+            width: 450px; /* 调整滚动后缩小 Logo 的尺寸，缩小比例减小 */
         }
 
         .logo:hover {
@@ -154,17 +178,17 @@
         }
 
         .nav-bar {
-            position: absolute; /* 改回 absolute 定位 */
-            top: 150px; /* 定位在 logo 下方，假设 logo 高度加上间距约为 120px (logo top 30px + height ~70px + margin 20px) */
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: #0B6CB8;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); /* 阴影调整回下方 */
-            z-index: 100;
+            /* position: absolute; */ /* 不再需要绝对定位 */
+            /* top: 30px; */
+            /* right: 30px; */
+            width: auto; /* 宽度自适应内容 */
+            height: auto; /* 高度自适应内容 */
+            background: transparent; /* 保持透明背景 */
+            box-shadow: none; /* 保持无阴影 */
+            /* z-index: 100; */
             display: flex;
             align-items: center;
-            justify-content: center;
+            /* justify-content: flex-end; */ /* 由父容器控制对齐 */
             padding-top: 0;
         }
 
@@ -180,22 +204,30 @@
         }
 
         .nav-item {
-            color: #FFFFFF;
-            font-size: 20px; /* 可以根据需要调整回原始大小或新的大小 */
-            font-weight: 400;
+            color: #FFFFFF; /* 初始颜色为白色 */
+            font-size: 18px; /* 增大初始字体大小 */
+            font-weight: 500; /* 可以适当加粗 */
             text-decoration: none;
-            padding: 10px 10px; /* 调整内边距以适应横向布局 */
-            transition: all 0.3s ease;
+            padding: 10px 15px; /* 调整内边距 */
+            transition: color 0.5s ease, font-size 0.5s ease, padding 0.5s ease; /* 添加颜色和内边距过渡 */
             cursor: pointer;
             white-space: nowrap;
             text-align: center;
             width: auto; /* 宽度自适应内容 */
             border-bottom: none; /* 移除底部边框 */
-            border-right: 1px solid rgba(255, 255, 255, 0.3); /* 添加右侧边框作为分割线 */
+            border-right: none; /* 移除右侧边框 */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* 初始文字阴影，确保白色字体清晰 */
+        }
+
+        .header-container.scrolled .nav-item {
+            color: #333333; /* 滚动后字体颜色变黑 */
+            font-size: 16px; /* 调整滚动后字体大小，缩小比例减小 */
+            padding: 8px 12px; /* 调整滚动后内边距 */
+            text-shadow: none; /* 滚动后移除文字阴影，因为黑色字体在浅色背景上通常足够清晰 */
         }
 
         .nav-item:last-child {
-            border-right: none; /* 最后一个项目移除右边框 */
+            /* border-right: none; */ /* 此规则不再需要，因为所有项目的右边框都移除了 */
         }
 
         .nav-item:hover {
@@ -220,22 +252,25 @@
     </style>
 </head>
 <body>
+    <div class="header-container" id="headerContainer">
+        <img src="img/$RDROL1K.png" alt="Logo" class="logo">
+        <nav class="nav-bar">
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-item active">首页</a></li>
+                <li><a href="#" class="nav-item">学院概况</a></li>
+                <li><a href="#" class="nav-item">机构设置</a></li>
+                <li><a href="#" class="nav-item">党群工作</a></li>
+                <li><a href="#" class="nav-item">教职员工</a></li>
+                <li><a href="#" class="nav-item">本科生教育</a></li>
+                <li><a href="#" class="nav-item">研究生教育</a></li>
+                <li><a href="#" class="nav-item">科学研究</a></li>
+                <li><a href="#" class="nav-item">国际合作</a></li>
+            </ul>
+        </nav>
+    </div>
     <div class="container" id="container">
         <div class="section section1">
-            <img src="img/$RDROL1K.png" alt="Logo" class="logo">
-            <nav class="nav-bar">
-                <ul class="nav-menu">
-                    <li><a href="#" class="nav-item active">首页</a></li>
-                    <li><a href="#" class="nav-item">学院概况</a></li>
-                    <li><a href="#" class="nav-item">机构设置</a></li>
-                    <li><a href="#" class="nav-item">党群工作</a></li>
-                    <li><a href="#" class="nav-item">教职员工</a></li>
-                    <li><a href="#" class="nav-item">本科生教育</a></li>
-                    <li><a href="#" class="nav-item">研究生教育</a></li>
-                    <li><a href="#" class="nav-item">科学研究</a></li>
-                    <li><a href="#" class="nav-item">国际合作</a></li>
-                </ul>
-            </nav>
+            <!-- Logo and Nav are now in header-container -->
         </div>
         
         <div class="section section2">
@@ -262,6 +297,7 @@
         const totalSections = 4;
         const container = document.getElementById('container');
         const dots = document.querySelectorAll('.scroll-dot');
+        const headerContainer = document.getElementById('headerContainer'); // 获取 header 容器
         let isScrolling = false;
 
         function updateSection(sectionIndex) {
@@ -275,6 +311,13 @@
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSection);
             });
+
+            // 根据当前 section 更新 header 状态
+            if (currentSection > 0) {
+                headerContainer.classList.add('scrolled');
+            } else {
+                headerContainer.classList.remove('scrolled');
+            }
         }
 
         function handleWheel(event) {
