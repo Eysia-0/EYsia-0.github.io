@@ -31,17 +31,459 @@
             color: white;
             font-size: 3rem;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            /* text-shadow: 2px 2px 4px rgba(0,0,0,0.5); */ /* 移除全局文字阴影 */
         }
 
         .section1 {
             background: url('img/home1_b1.jpg') center/cover no-repeat; /* 恢复背景效果 */
             /* background-color: #333; */ /* 移除替代背景色 */
+            justify-content: flex-start;
+            padding-left: 50px;
+            position: relative; /* Ensure positioning context for absolute children */
+        }
+
+        .top-right-nav {
+            position: absolute;
+            top: 100px; /* 增加top值，向下移动整个导航区域 */
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 10;
+        }
+
+        .top-links {
+            margin-bottom: 10px;
+        }
+
+        .top-links a {
+            color: rgb(12, 12, 12);
+            text-decoration: none;
+            margin: 0 3px; /* 减小链接间距 */
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 12px; /* 稍微减小内边距 */
+            display: inline-block; /* 使padding生效 */
+            border-radius: 5px; /* 增加圆角 */
+            transition: background-color 0.3s; /* 增加过渡时间 */
+            min-height: 20px; /* 设置最小高度 */
+        }
+
+        .top-links {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc; /* 分割线颜色设为灰色 */
+            font-weight: 300; /* 使分割线变细 */
+        }
+
+        .top-links a:hover {
+            text-decoration: underline;
+            background-color: rgba(255, 255, 255, 0.1); /* 悬停时的背景色 */
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-image: url('img/top_hunt_bg.png');
+            background-repeat: no-repeat;
+            background-size: contain; /* Or cover, depending on desired effect */
+            padding: 8px 15px 8px 35px; /* 增加内边距 */
+            border-radius: 5px;
+            height: 30px; /* 增加高度以适应更大的按钮 */
+            position: relative; /* For positioning the icon */
+            margin-top: 15px; /* 向下移动搜索框 */
+        }
+
+        .search-container input[type="text"] {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #333; /* Adjust text color for readability */
+            font-size: 14px;
+            width: 150px; /* Adjust as needed */
+        }
+
+        .search-container button {
+            background-image: url('img/top_hunt.png');
+            background-repeat: no-repeat;
+            background-size: 18px 18px; /* 稍微增加图标大小 */
+            background-position: center; /* 居中显示图标 */
+            border: none;
+            width: 40px; /* 进一步增加按钮宽度 */
+            height: 45px; /* 进一步增加按钮高度 */
+            cursor: pointer;
+            background-color: transparent;
+            margin-left: 8px;
+            border-radius: 5px; /* 增加圆角 */
+            transition: all 0.3s; /* 添加全面过渡效果 */
+            padding: 5px; /* 添加内边距 */
+        }
+
+        .search-container button:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 增强悬停时的背景色 */
+            transform: scale(1.05); /* 悬停时轻微放大 */
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .carousel-container {
+            width: 700px;
+            height: 450px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-text-container {
+            width: 500px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            background-color: rgba(233, 224, 224, 0.8);
+            border-radius: 15px;
+        }
+
+        .carousel-text {
+            color: #2e2e2e;
+            font-size: 24px;
+            line-height: 1.6;
+            text-align: left;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            width: 100%;
+            word-wrap: break-word;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .carousel-text.active {
+            opacity: 1;
+        }
+
+        .carousel-images {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .news-container {
+            width: 500px; /* 根据需要调整宽度 */
+            height: 450px; /* 与轮播图高度一致 */
+            background-color: rgba(233, 224, 224, 0.85); /* 背景色，可调整透明度 */
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 与轮播图一致的阴影 */
+            /* overflow: hidden; */ /* 移除此行，允许内容滚动 */
+        }
+
+        .news-container h4 {
+            color: #1a237e; /* 深蓝色标题 */
+            font-size: 22px; /* 标题字号 */
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #3949ab; /* 标题下划线 */
+            padding-bottom: 10px;
+        }
+
+        .news-container ul {
+            list-style: none; /* 去掉列表默认样式 */
+            padding: 0;
+            margin: 0;
+            flex-grow: 1; /* 占据剩余空间 */
+            overflow-y: auto; /* 内容超出时显示滚动条 */
+        }
+
+        .news-container li {
+            color: #333; /* 新闻条目文字颜色 */
+            font-size: 15px; /* 新闻条目字号 */
+            line-height: 1.8;
+            margin-bottom: 12px;
+            white-space: nowrap; /* 强制单行显示 */
+            overflow: hidden; /* 超出部分隐藏 */
+            text-overflow: ellipsis; /* 超出部分显示省略号 */
+            padding: 6px 0 6px 25px; /* 调整内边距，为图标留出空间 */
+            border-bottom: 1px dashed #ccc; /* 条目间分隔线 */
+            transition: color 0.3s ease, background-image 0.3s ease;
+            background-image: url('img/point2.png');
+            background-repeat: no-repeat;
+            background-position: left center; /* 图标居左垂直居中 */
+            background-size: 8px 8px; /* 图标大小 */
+        }
+        .news-container li:hover {
+            color: #d32f2f; /* 鼠标悬停时文字颜色变化 */
+            cursor: pointer;
+            background-image: url('img/point1.png');
+        }
+
+        .news-container li:last-child {
+            border-bottom: none; /* 最后一个条目无下划线 */
+            margin-bottom: 0;
+        }
+
+        /* 自定义滚动条样式 (可选) */
+        .news-container ul::-webkit-scrollbar {
+            width: 8px;
+        }
+        .news-container ul::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+        .news-container ul::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .news-container ul::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            object-fit: cover;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .carousel-indicator {
+            width: 40px;
+            height: 40px;
+            background-image: url('img/clw.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-indicator.active {
+            background-image: url('img/ban_01.png');
+        }
+
+        .carousel-indicator .indicator-number {
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         .section2 {
             display: flex;
             position: relative;
+            align-items: center; /* 垂直居中 */
+            justify-content: flex-start; /* 内容靠左 */
+            padding: 20px; /* 添加一些内边距，使盒子不贴边 */
+            background: url('img/home3_b1.jpg') center/cover no-repeat; /* 修改为原section3的背景 */
+        }
+
+        .quick-nav-container {
+            width: 280px; /* 调整宽度 */
+            max-height: 80vh; /* 限制最大高度，避免过高 */
+            background-color: rgba(255, 255, 255, 0.85); /* 白色背景，调整透明度以便背景图透出 */
+            /* border-radius: 10px; */ /* 移除圆角 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            /* overflow: hidden; */ /* 移除圆角后不再严格需要 */
+            margin-left: 50px; /* 距离左边边缘的距离 */
+           z-index: 1; /* 确保导航在背景之上，但允许背景透出 */
+        }
+
+        .notifications-container {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 20px; /* 与左侧导航的间距 */
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            /* border-radius: 10px; */ /* 根据需要添加圆角 */
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh; /* 限制最大高度 */
+            overflow-y: auto; /* 内容超出时滚动 */
+        }
+
+        .notifications-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 2px solid #007bff;
+            margin-bottom: 20px;
+        }
+
+        .notification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 响应式网格布局 */
+            gap: 20px;
+        }
+
+        .notification-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            /* padding: 10px; Let content define padding or set it on .notification-item-content */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: left;
+            overflow: hidden; /* Ensure content doesn't spill out */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack image and content vertically */
+        }
+        .notification-item-content {
+            padding: 10px; /* Add padding to the content area instead of the whole item */
+        }
+
+        .notification-item img {
+            width: 100%; /* Make image responsive within its container */
+            height: 100px; /* Fixed height for uniformity */
+            object-fit: cover; /* Ensures the image covers the area, cropping if necessary */
+            border-bottom: 1px solid #eee;
+            display: block; /* Remove extra space below image */
+        }
+        .notification-item {
+            /* ... existing styles ... */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack image and content vertically */
+        }
+
+        .notification-item-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification-item-content h5 {
+            font-size: 0.4em; /* 保持用户原始字体大小 */
+            margin: 5px 0;
+            color: #000; /* Changed to black */
+            font-weight: normal; /* 1. 减小字体粗度 */
+            line-height: 1.3; /* 调整行高以适应多行 */
+            position: relative; /* 为了日期定位 */
+            /* 2. 每行标题最多2行，两行不够省略内容用"..."代替 */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Webkit浏览器支持 */
+            line-clamp: 2; /* 标准属性 */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            /* text-overflow: ellipsis;  我们将通过JS或更复杂的CSS来处理省略号和日期 */
+            padding-right: 75px; /* 给日期留出空间，根据实际日期宽度调整 */
+        }
+        .notification-item a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit color from parent, h5 will set it to black */
+            /* display: contents; */ /* Removed to allow <a> to behave as inline or block for text flow */
+        }
+
+        /* 3. 日期字体浅灰色 (新规则) */
+        .notification-item-content h5 .notification-date {
+            color: #aaa; /* 浅灰色 */
+            font-size: 0.85em; /* 日期字体大小可以调整 */
+            position: absolute;
+            right: 5px; /* 定位到右边 */
+            bottom: 0; /* 定位到h5的底部 */
+            line-height: 1.3; /* 与h5行高一致 */
+            white-space: nowrap; /* 防止日期换行 */
+            background: #fff; /* 背景色确保日期不与省略号重叠 */
+            padding-left: 3px; /* 与省略号之间留一点空隙 */
+        }
+
+        .notification-item-content p {
+            font-size: 0.5em;
+            color: #555;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .quick-nav-header {
+            background-color: #007bff; /* 蓝色区域 */
+            color: white;
+            padding: 12px; /* 减小内边距 */
+            text-align: center;
+            font-size: 1rem; /* 减小字体大小 */
+            font-weight: normal; /* 减小字体粗度 */
+        }
+
+        .quick-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto; /* 内容过多时可滚动 */
+            flex-grow: 1;
+        }
+
+        .quick-nav-list li {
+            padding: 10px 15px; /* 减小内边距 */
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: #333;
+            font-size: 0.9rem; /* 减小字体大小 */
+            font-weight: normal; /* 减小字体粗度 */
+        }
+
+        .quick-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .quick-nav-list li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .quick-nav-list li .arrow {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.2s ease-in-out;
+        }
+
+        .quick-nav-list li .arrow.arrow2 {
+            background-image: url('img/arrow2.png');
+        }
+
+        .quick-nav-list li:hover .arrow.arrow2 {
+            background-image: url('img/arrow1.png');
         }
 
         .section2 .image-part {
@@ -52,18 +494,120 @@
             background-repeat: no-repeat;
         }
 
-        .section2 .image-part:nth-child(1) {
+        /* .section2 .image-part:nth-child(1) {
             background-image: url('img/home2_b1.jpg');
         }
 
         .section2 .image-part:nth-child(2) {
             background-image: url('img/home2_b2.jpg');
-        }
+        } */
 
         
 
         .section3 {
-            background: url('img/home3_b1.jpg') center/cover no-repeat;
+            background: url('img/home3_b1.jpg') center/cover no-repeat; /* 修改为原section3的背景 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .section3-content {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            gap: 40px;
+            height: 80vh;
+        }
+
+        .section3-left {
+            width: 40%; /* 左边占2/5 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section3-right {
+            width: 60%; /* 右边占3/5 */
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .section3-news-container {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(233, 224, 224, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section3-news-container h4 {
+            color: #1a237e;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #3949ab;
+            padding-bottom: 12px;
+        }
+
+        .section3-news-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .section3-news-container li {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 8px 0 8px 30px;
+            border-bottom: 1px dashed #ccc;
+            transition: color 0.3s ease, background-image 0.3s ease;
+            background-image: url('img/point2.png');
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 10px 10px;
+        }
+
+        .section3-news-container li:hover {
+            color: #d32f2f;
+            cursor: pointer;
+            background-image: url('img/point1.png');
+        }
+
+        .section3-news-container li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section3-news-container ul::-webkit-scrollbar {
+            width: 8px;
+        }
+        .section3-news-container ul::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+        .section3-news-container ul::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .section3-news-container ul::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
         .section4 {
@@ -150,7 +694,7 @@
             z-index: 1000; /* 确保在最上层 */
             transition: padding 0.5s ease, background 0.5s ease; /* 过渡效果，改为 background */
             /* background-color: transparent; */ /* 移除纯透明背景 */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%); /* 顶部轻微加深渐变 */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 100%); /* 顶部半透明黑色渐变 */
         }
 
         .header-container.scrolled {
@@ -225,11 +769,6 @@
             padding: 8px 12px; /* 调整滚动后内边距 */
             text-shadow: none; /* 滚动后移除文字阴影，因为黑色字体在浅色背景上通常足够清晰 */
         }
-
-        .nav-item:last-child {
-            /* border-right: none; */ /* 此规则不再需要，因为所有项目的右边框都移除了 */
-        }
-
         .nav-item:hover {
             background: rgba(255, 255, 255, 0.2);
         }
@@ -242,7 +781,6 @@
         }
 
         .nav-item.active {
-            background: rgba(255, 255, 255, 0.1);
             color: white;
         }
 
@@ -270,15 +808,170 @@
     </div>
     <div class="container" id="container">
         <div class="section section1">
-            <!-- Logo and Nav are now in header-container -->
+            <div class="top-right-nav">
+                <div class="top-links">
+                    <a href="#">师大首页</a> |
+                    <a href="#">联系我们</a> |
+                    <a href="#">本站导航</a> |
+                    <a href="#">旧版回顾</a> |
+                    <a href="#">English</a>
+                </div>
+                <div class="search-container">
+                    <input type="text">
+                    <button type="submit"></button>
+                </div>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="carousel-images">
+                        <img src="img/pc1.png" alt="Image 1" class="carousel-image active">
+                        <img src="img/pc2.jpg" alt="Image 2" class="carousel-image">
+                        <img src="img/pc3.png" alt="Image 3" class="carousel-image">
+                        <img src="img/pc4.png" alt="Image 4" class="carousel-image">
+                        <img src="img/pc5.png" alt="Image 5" class="carousel-image">
+                    </div>
+                    <div class="carousel-indicators">
+                        <div class="carousel-indicator active" data-slide="0">
+                            <span class="indicator-number">1</span>
+                        </div>
+                        <div class="carousel-indicator" data-slide="1">
+                            <span class="indicator-number">2</span>
+                        </div>
+                        <div class="carousel-indicator" data-slide="2">
+                            <span class="indicator-number">3</span>
+                        </div>
+                        <div class="carousel-indicator" data-slide="3">
+                            <span class="indicator-number">4</span>
+                        </div>
+                        <div class="carousel-indicator" data-slide="4">
+                            <span class="indicator-number">5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-container">
+                    <h4>学院新闻</h4>
+                    <ul>
+                        <li>教师第一、二党支部开展联动活动 ——"迎评应会知识学习"周某日活动 [05-28]</li>
+                        <li>我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖 [05-14]</li>
+                        <li>2023级硕士生赵德奎同学论文被人工智能领域顶级会议 IJCAI 2025接收 [05-07]</li>
+                        <li>智能信息处理团队四篇论文入选人工智能领域顶级会议 IJCAI 2025 [04-30]</li>
+                        <li>2022级硕士生任蒙恩在国际期刊Neurocomputing发表论文 [03-27]</li>
+                        <li>我院成功举办"巧手传非遗，珐彩绽芳华"非遗掐丝珐琅体验活动献礼第115个国际劳动妇女节 [03-09]</li>
+                        <li>直聘教授+顶尖基础教育资源|东北师范大学诚邀全球英才依托申报 [03-03]</li>
+                        <li>我院成功举办"春风有'信'、'科'映朝阳" 2025新年联欢会 [01-10]</li>
+                        <li>信息科学与技术学院校友返校招聘 共促毕业生高质量就业 [01-08]</li>
+                        <li>信息科学与技术学院举办2024年度颁奖典礼暨"蛇舞新春 智绘未来"元旦晚会 [12-26]</li>
+                        <li>AI for Science团队在生物信息学领域顶级期刊Bioinformatics发表系列论文 [12-25]</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         
         <div class="section section2">
-            <div class="image-part"></div>
-            <div class="image-part"></div>
+            <div class="quick-nav-container">
+                <div class="quick-nav-header">快速导航</div>
+                <ul class="quick-nav-list">
+                    <li><span class="arrow arrow2"></span>实验资源</li>
+                    <li><span class="arrow arrow2"></span>招生就业</li>
+                    <li><span class="arrow arrow2"></span>服务指南</li>
+                    <li><span class="arrow arrow2"></span>院内专题</li>
+                    <li><span class="arrow arrow2"></span>证书培训</li>
+                    <li><span class="arrow arrow2"></span>学生天地</li>
+                    <li><span class="arrow arrow2"></span>精品课程</li>
+                    <li><span class="arrow arrow2"></span>规章制度</li>
+                    <li><span class="arrow arrow2"></span>校友之窗</li>
+                </ul>
+            </div>
+            <div class="notifications-container">
+                <div class="notifications-header">学院通知</div>
+                <div class="notification-grid">
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/one.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>博士中期考核公告 <span class="notification-date">(06/16)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/two.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>关于2025年9月（第76次）全国计算机等级考试报名通知 <span class="notification-date">(06/16)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/three.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>学位论文开题公告 <span class="notification-date">(06/12)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/four.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>关于公布信息科学与技术学院2025年博士研究生“申请-考核制”综合考核结果的通知（6月12日更新） <span class="notification-date">(06/12)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/five.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>信息科学与技术学院2026年博士生导师任职资格公示 <span class="notification-date">(06/04)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/six.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>信息科学与技术学院2025年度本科教学及公共教学的实验室建设项目实施方案公示 <span class="notification-date">(05/21)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/seven.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>信息科学与技术学院2025年全国优秀大学生暑期夏令营招生简章 <span class="notification-date">(05/21)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="notification-item">
+                        <a href="#">
+                            <img src="img/eight.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5>东北师范大学计算机科学与技术学科学位论文答辩公告-2025年05月22日 <span class="notification-date">(05/19)</span></h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="section section3">
+            <div class="section3-content">
+                <div class="section3-left">
+                    <div class="section3-news-container">
+                        <h4>学院动态</h4>
+                        <ul>
+                            <li>新闻标题1 - 待补充</li>
+                            <li>新闻标题2 - 待补充</li>
+                            <li>新闻标题3 - 待补充</li>
+                            <li>新闻标题4 - 待补充</li>
+                            <li>新闻标题5 - 待补充</li>
+                            <li>新闻标题6 - 待补充</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section3-right">
+                    右侧内容区域 - 待添加
+                </div>
+            </div>
         </div>
         
         <div class="section section4">
@@ -343,7 +1036,19 @@
         }
 
         // 鼠标滚轮事件
-        window.addEventListener('wheel', handleWheel, { passive: false });
+        const newsContainer = document.querySelector('.news-container ul');
+
+        window.addEventListener('wheel', function(event) {
+            // 检查鼠标是否在新闻容器内
+            if (newsContainer && newsContainer.contains(event.target)) {
+                // 如果鼠标在新闻容器内，并且新闻容器可以滚动，则不阻止页面滚动
+                if (newsContainer.scrollHeight > newsContainer.clientHeight) {
+                    // 允许新闻容器内部的滚动
+                    return;
+                }
+            }
+            handleWheel(event);
+        }, { passive: false });
 
         // 点击指示器切换
         dots.forEach((dot, index) => {
@@ -411,6 +1116,104 @@
                 }, 800);
             }
         });
+
+        // 轮播图功能
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const carouselImages = document.querySelectorAll('.carousel-image');
+        const carouselIndicators = document.querySelectorAll('.carousel-indicator');
+        let carouselInterval;
+
+        function updateCarousel(slideIndex) {
+            // 更新图片显示
+            carouselImages.forEach((img, index) => {
+                img.classList.toggle('active', index === slideIndex);
+            });
+            
+            // 更新指示器
+            carouselIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === slideIndex);
+            });
+            
+            // 更新文字显示
+            const carouselTexts = document.querySelectorAll('.carousel-text');
+            carouselTexts.forEach((text, index) => {
+                text.classList.toggle('active', index === slideIndex);
+            });
+            
+            currentSlide = slideIndex;
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % totalSlides;
+            updateCarousel(nextIndex);
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 3000); // 每3秒切换一次
+        }
+
+        function stopCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        // 点击指示器切换图片
+        carouselIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                updateCarousel(index);
+                stopCarousel();
+                startCarousel(); // 重新开始自动轮播
+            });
+        });
+
+        // 鼠标悬停时停止自动轮播
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', stopCarousel);
+            carouselContainer.addEventListener('mouseleave', startCarousel);
+        }
+
+        // 页面加载完成后开始轮播
+        window.addEventListener('load', () => {
+            startCarousel();
+        });
     </script>
 </body>
 </html>
+
+<!-- Placeholder for notification items -->
+                        <div class="notification-item">
+                            <img src="img/pc1.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5><a href="#">通知标题1：这是一个示例通知标题，可能有点长，看看效果<span class="notification-date">[2024-01-01]</span></a></h5>
+                                <p>这是一条示例通知的简要内容描述...</p>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <img src="img/pc2.jpg" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5><a href="#">通知标题2：短一点的标题<span class="notification-date">[2024-01-02]</span></a></h5>
+                                <p>这是另一条通知的摘要信息。</p>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <img src="img/pc3.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5><a href="#">通知标题3：关于xxx的重要更新和说明<span class="notification-date">[2024-01-03]</span></a></h5>
+                                <p>请相关人员注意查收和处理。</p>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <img src="img/pc4.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5><a href="#">通知标题4：会议通知 - 时间地点及议程<span class="notification-date">[2024-01-04]</span></a></h5>
+                                <p>详情请点击查看附件。</p>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <img src="img/pc5.png" alt="Notification Image">
+                            <div class="notification-item-content">
+                                <h5><a href="#">通知标题5：系统维护公告<span class="notification-date">[2024-01-05]</span></a></h5>
+                                <p>维护时间：xx月xx日 xx:xx - xx:xx。</p>
+                            </div>
+                        </div>
