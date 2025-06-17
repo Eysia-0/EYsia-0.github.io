@@ -375,6 +375,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 初始化科研轮播图
     researchCarouselInstance = new ResearchCarousel();
+    
+    // 添加悬浮图片点击事件
+    const yjjcImage = document.querySelector('.floating-image.yjjc');
+    if (yjjcImage) {
+        yjjcImage.addEventListener('click', () => {
+            // 这里可以添加点击后的行为，比如打开链接或显示弹窗
+            alert('研究机构页面功能待开发');
+            // 或者跳转到指定页面：
+            // window.open('research-institute.html', '_blank');
+        });
+    }
 });
 
 // 备用启动逻辑，确保轮播一定会开始
