@@ -124,13 +124,13 @@
             transform: scale(1.05); /* 悬停时轻微放大 */
         }
 
-        .carousel-wrapper {
+        .content-wrapper {
             display: flex;
             gap: 40px;
             align-items: flex-start;
         }
 
-        .carousel-container {
+        .content-container {
             width: 700px;
             height: 450px;
             position: relative;
@@ -138,184 +138,6 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .carousel-text-container {
-            width: 500px;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            position: relative;
-            background-color: rgba(233, 224, 224, 0.8);
-            border-radius: 15px;
-        }
-
-        .carousel-text {
-            color: #2e2e2e;
-            font-size: 24px;
-            line-height: 1.6;
-            text-align: left;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            width: 100%;
-            word-wrap: break-word;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .carousel-text.active {
-            opacity: 1;
-        }
-
-        .carousel-images {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .news-container {
-            width: 500px; /* 根据需要调整宽度 */
-            height: 450px; /* 与轮播图高度一致 */
-            background-color: rgba(233, 224, 224, 0.85); /* 背景色，可调整透明度 */
-            border-radius: 15px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 与轮播图一致的阴影 */
-            /* overflow: hidden; */ /* 移除此行，允许内容滚动 */
-        }
-
-        .news-container h4 {
-            color: #1a237e; /* 深蓝色标题 */
-            font-size: 22px; /* 标题字号 */
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-            border-bottom: 2px solid #3949ab; /* 标题下划线 */
-            padding-bottom: 10px;
-        }
-
-        .news-container ul {
-            list-style: none; /* 去掉列表默认样式 */
-            padding: 0;
-            margin: 0;
-            flex-grow: 1; /* 占据剩余空间 */
-            overflow-y: auto; /* 内容超出时显示滚动条 */
-        }
-
-        .news-container li {
-            color: #333; /* 新闻条目文字颜色 */
-            font-size: 15px; /* 新闻条目字号 */
-            line-height: 1.8;
-            margin-bottom: 12px;
-            padding: 6px 0 6px 25px; /* 调整内边距，为图标留出空间 */
-            border-bottom: 1px dashed #ccc; /* 条目间分隔线 */
-            transition: color 0.3s ease, background-image 0.3s ease;
-            background-image: url('img/point2.png');
-            background-repeat: no-repeat;
-            background-position: left center; /* 图标居左垂直居中 */
-            background-size: 8px 8px; /* 图标大小 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .news-container li .news-title {
-            flex: 1;
-            white-space: nowrap; /* 强制单行显示 */
-            overflow: hidden; /* 超出部分隐藏 */
-            text-overflow: ellipsis; /* 超出部分显示省略号 */
-            margin-right: 10px;
-        }
-        
-        .news-container li .news-date {
-            flex-shrink: 0; /* 不允许缩小 */
-            color: #666;
-            font-size: 13px;
-        }
-        .news-container li:hover {
-            color: #d32f2f; /* 鼠标悬停时文字颜色变化 */
-            cursor: pointer;
-            background-image: url('img/point1.png');
-        }
-
-        .news-container li:last-child {
-            border-bottom: none; /* 最后一个条目无下划线 */
-            margin-bottom: 0;
-        }
-
-        /* 自定义滚动条样式 (可选) */
-        .news-container ul::-webkit-scrollbar {
-            width: 8px;
-        }
-        .news-container ul::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.05);
-            border-radius: 4px;
-        }
-        .news-container ul::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        .news-container ul::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            object-fit: cover;
-        }
-
-        .carousel-image.active {
-            opacity: 1;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .carousel-indicator {
-            width: 40px;
-            height: 40px;
-            background-image: url('img/clw.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-indicator.active {
-            background-image: url('img/ban_01.png');
-        }
-
-        .carousel-indicator .indicator-number {
-            color: #000;
-            font-size: 16px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         .section2 {
@@ -979,48 +801,12 @@
                     <button type="submit"></button>
                 </div>
             </div>
-            <div class="carousel-wrapper">
-                <div class="carousel-container">
-                    <div class="carousel-images">
-                        <img src="img/pc1.png" alt="Image 1" class="carousel-image active">
-                        <img src="img/pc2.jpg" alt="Image 2" class="carousel-image">
-                        <img src="img/pc3.png" alt="Image 3" class="carousel-image">
-                        <img src="img/pc4.png" alt="Image 4" class="carousel-image">
-                        <img src="img/pc5.png" alt="Image 5" class="carousel-image">
-                    </div>
-                    <div class="carousel-indicators">
-                        <div class="carousel-indicator active" data-slide="0">
-                            <span class="indicator-number">1</span>
-                        </div>
-                        <div class="carousel-indicator" data-slide="1">
-                            <span class="indicator-number">2</span>
-                        </div>
-                        <div class="carousel-indicator" data-slide="2">
-                            <span class="indicator-number">3</span>
-                        </div>
-                        <div class="carousel-indicator" data-slide="3">
-                            <span class="indicator-number">4</span>
-                        </div>
-                        <div class="carousel-indicator" data-slide="4">
-                            <span class="indicator-number">5</span>
-                        </div>
-                    </div>
+            <div class="content-wrapper">
+                <div class="content-container">
+                    <!-- 左侧内容区域 - 保留盒子框架 -->
                 </div>
-                <div class="news-container">
-                    <h4>学院新闻</h4>
-                    <ul>
-                        <li><span class="news-title">教师第一、二党支部开展联动活动 ——"迎评应会知识学习"周某日活动</span><span class="news-date">[05-28]</span></li>
-                        <li><span class="news-title">我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖</span><span class="news-date">[05-14]</span></li>
-                        <li><span class="news-title">2023级硕士生赵德奎同学论文被人工智能领域顶级会议 IJCAI 2025接收</span><span class="news-date">[05-07]</span></li>
-                        <li><span class="news-title">智能信息处理团队四篇论文入选人工智能领域顶级会议 IJCAI 2025</span><span class="news-date">[04-30]</span></li>
-                        <li><span class="news-title">2022级硕士生任蒙恩在国际期刊Neurocomputing发表论文</span><span class="news-date">[03-27]</span></li>
-                        <li><span class="news-title">我院成功举办"巧手传非遗，珐彩绽芳华"非遗掐丝珐琅体验活动献礼第115个国际劳动妇女节</span><span class="news-date">[03-09]</span></li>
-                        <li><span class="news-title">直聘教授+顶尖基础教育资源|东北师范大学诚邀全球英才依托申报</span><span class="news-date">[03-03]</span></li>
-                        <li><span class="news-title">我院成功举办"春风有'信'、'科'映朝阳" 2025新年联欢会</span><span class="news-date">[01-10]</span></li>
-                        <li><span class="news-title">信息科学与技术学院校友返校招聘 共促毕业生高质量就业</span><span class="news-date">[01-08]</span></li>
-                        <li><span class="news-title">信息科学与技术学院举办2024年度颁奖典礼暨"蛇舞新春 智绘未来"元旦晚会</span><span class="news-date">[12-26]</span></li>
-                        <li><span class="news-title">AI for Science团队在生物信息学领域顶级期刊Bioinformatics发表系列论文</span><span class="news-date">[12-25]</span></li>
-                    </ul>
+                <div class="content-container">
+                    <!-- 右侧内容区域 - 保留盒子框架 -->
                 </div>
             </div>
         </div>
@@ -1284,17 +1070,7 @@
         }
 
         // 鼠标滚轮事件
-        const newsContainer = document.querySelector('.news-container ul');
-
         window.addEventListener('wheel', function(event) {
-            // 检查鼠标是否在新闻容器内
-            if (newsContainer && newsContainer.contains(event.target)) {
-                // 如果鼠标在新闻容器内，并且新闻容器可以滚动，则不阻止页面滚动
-                if (newsContainer.scrollHeight > newsContainer.clientHeight) {
-                    // 允许新闻容器内部的滚动
-                    return;
-                }
-            }
             handleWheel(event);
         }, { passive: false });
 
@@ -1365,66 +1141,7 @@
             }
         });
 
-        // 轮播图功能
-        let currentSlide = 0;
-        const totalSlides = 5;
-        const carouselImages = document.querySelectorAll('.carousel-image');
-        const carouselIndicators = document.querySelectorAll('.carousel-indicator');
-        let carouselInterval;
-
-        function updateCarousel(slideIndex) {
-            // 更新图片显示
-            carouselImages.forEach((img, index) => {
-                img.classList.toggle('active', index === slideIndex);
-            });
-            
-            // 更新指示器
-            carouselIndicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === slideIndex);
-            });
-            
-            // 更新文字显示
-            const carouselTexts = document.querySelectorAll('.carousel-text');
-            carouselTexts.forEach((text, index) => {
-                text.classList.toggle('active', index === slideIndex);
-            });
-            
-            currentSlide = slideIndex;
-        }
-
-        function nextSlide() {
-            const nextIndex = (currentSlide + 1) % totalSlides;
-            updateCarousel(nextIndex);
-        }
-
-        function startCarousel() {
-            carouselInterval = setInterval(nextSlide, 3000); // 每3秒切换一次
-        }
-
-        function stopCarousel() {
-            clearInterval(carouselInterval);
-        }
-
-        // 点击指示器切换图片
-        carouselIndicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                updateCarousel(index);
-                stopCarousel();
-                startCarousel(); // 重新开始自动轮播
-            });
-        });
-
-        // 鼠标悬停时停止自动轮播
-        const carouselContainer = document.querySelector('.carousel-container');
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', stopCarousel);
-            carouselContainer.addEventListener('mouseleave', startCarousel);
-        }
-
-        // 页面加载完成后开始轮播
-        window.addEventListener('load', () => {
-            startCarousel();
-        });
+        // 轮播图功能已移除
         
         // 科研动态轮播图功能
         let currentResearchSlide = 0;
