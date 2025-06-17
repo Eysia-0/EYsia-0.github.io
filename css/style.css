@@ -669,6 +669,27 @@ body {
     pointer-events: none;
 }
 
+.research-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.research-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.research-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
 .research-item.active {
     opacity: 1;
     pointer-events: auto;
