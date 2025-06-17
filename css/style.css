@@ -307,6 +307,29 @@ body {
     background-image: url('../img/point1.png');
 }
 
+/* 新闻链接样式 */
+.news-container .news-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: color 0.3s ease;
+}
+
+.news-container .news-link:hover {
+    color: #d32f2f;
+}
+
+.news-container .news-link:hover .news-title {
+    color: #d32f2f;
+}
+
+.news-container .news-link:hover .news-date {
+    color: #d32f2f;
+}
+
 .news-container li:last-child {
     border-bottom: none; /* 最后一个条目无下划线 */
     margin-bottom: 0;

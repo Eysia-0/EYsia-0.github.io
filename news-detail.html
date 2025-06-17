@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师第一、二党支部开展联动活动——迎评应会知识学习 - 东北师范大学信息科学与技术学院</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 重置body样式，允许滚动 */
+        body {
+            overflow: auto !important;
+            height: auto !important;
+        }
+        
+        /* 隐藏主页面的容器和滚动指示器 */
+        .container, .scroll-indicator {
+            display: none !important;
+        }
+        
+        /* Logo样式，与首页保持一致 */
+        .logo {
+            width: 600px;
+            height: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease, width 0.5s ease;
+        }
+        
+        .header-container.scrolled .logo {
+            width: 450px;
+        }
+        
+        .logo:hover {
+            opacity: 1;
+        }
+        
+        .news-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            min-height: 100vh;
+        }
+        
+        .breadcrumb {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .news-header {
+            text-align: center;
+            margin: 30px 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+        }
+        
+        .news-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .news-content {
+            margin: 40px 0;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .news-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+        
+        .news-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            color: #0066cc;
+        }
+        
+        .news-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .news-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .news-image-caption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #0066cc;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 30px 0;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #0052a3;
+        }
+        
+        .related-news {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .related-news h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .related-news ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-news li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        
+        .related-news a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .related-news a:hover {
+            color: #0066cc;
+        }
+        
+        .news-date-related {
+            color: #999;
+            font-size: 12px;
+            float: right;
+        }
+        
+        .news-footer {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .news-footer p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .next-news {
+            margin: 30px 0;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .next-news a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .next-news a:hover {
+            text-decoration: underline;
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .scroll-to-top:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .scroll-to-top.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 保持原有的头部导航 -->
+    <div class="header-container" id="headerContainer">
+        <div class="logo">
+            <img src="img/$RDROL1K.png" alt="Logo">
+        </div>
+        <nav class="nav-bar">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-item">首页</a></li>
+                <li><a href="#" class="nav-item">学院概况</a></li>
+                <li><a href="#" class="nav-item">师资队伍</a></li>
+                <li><a href="#" class="nav-item">教学工作</a></li>
+                <li><a href="#" class="nav-item">科学研究</a></li>
+                <li><a href="#" class="nav-item">学生工作</a></li>
+                <li><a href="#" class="nav-item">党建工作</a></li>
+                <li><a href="#" class="nav-item">招生就业</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="news-detail-container">
+        <!-- 面包屑导航 -->
+        <div class="breadcrumb">
+            <span>当前位置: </span><a href="index.html">首页</a> >> 
+            <a href="#">学院新闻</a> >> 
+            <span>正文</span>
+        </div>
+
+        <!-- 新闻头部 -->
+        <div class="news-header">
+            <h1 class="news-title">教师第一、二党支部开展联动活动<br>——"迎评应会知识学习"主题党日活动</h1>
+            <div class="news-meta">
+                <span>作者：</span> | 
+                <span>时间：2025-05-28</span> | 
+                <span>点击数：501</span>
+            </div>
+        </div>
+
+        <!-- 新闻正文 -->
+        <div class="news-content">
+            <p>以新一轮本科教育教学审核评估为契机，我院教师第一、二党支部于近日联合举办了"迎评应会知识学习"主题党日活动。</p>
+
+            <div class="news-image">
+                <img src="img/newsp.png" alt="党支部联动活动现场">
+                <div class="news-image-caption">教师第一、二党支部联动活动现场</div>
+            </div>
+
+            <p>活动首先进行的是两支部支委领学分享环节。王姣、万川、张哲、侯鲲、齐妙五名支委在会前自学基础上，分别领学"东北师范大学质保理念、质量文化、教风、学风""新一轮本科教育教学审核评估的目标意义、基本原则、主要内容及特点""新一轮本科教育教学审核评估的重点知识、关键要点和热点名词""东北师范大学本科教育教学评估工作方案与本科教学质量年实施方案""新一轮本科教育教学审核评估中学院、教师和学生如何做好准备工作"等内容；随后，两支部教师围绕立德树人根本任务，结合学习内容开展了讨论，党委书记郑燕林进行了本科教学审核评估相关知识的补充和深入讲解。教师第一党支部书记王姣主持活动。</p>
+
+            <p>本次支部联动活动的开展，充分体现了教师一二党支部坚持党建引领、问题驱动，着力把党建融入业务工作、融入党员需求、融入群众关切，推进党建与业务深度融合的使命感和自觉性，发挥了党支部在推动业务工作、服务中心工作中的战斗堡垒作用。</p>
+
+            <div class="news-footer">
+                <p><strong>初审：</strong>王姣</p>
+                <p><strong>复审：</strong>滕继波</p>
+                <p><strong>终审：</strong>郑燕林</p>
+            </div>
+        </div>
+
+        <!-- 下一篇新闻 -->
+        <div class="next-news">
+            <strong>下一篇：</strong><a href="#">我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖</a>
+        </div>
+
+        <!-- 返回按钮 -->
+        <a href="index.html" class="back-button">← 返回首页</a>
+
+        <!-- 相关新闻 -->
+        <div class="related-news">
+            <h3>其它新闻</h3>
+            <ul>
+                <li>
+                    <a href="#">我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖</a>
+                    <span class="news-date-related">[05-14]</span>
+                </li>
+                <li>
+                    <a href="#">2023级硕士生赵德奎同学论文被人工智能领域顶级会议 IJCAI 2025接收</a>
+                    <span class="news-date-related">[05-07]</span>
+                </li>
+                <li>
+                    <a href="#">智能信息处理团队四篇论文入选人工智能领域顶级会议 IJCAI 2025</a>
+                    <span class="news-date-related">[04-30]</span>
+                </li>
+                <li>
+                    <a href="#">我院成功举办"巧手传非遗，珐彩绽芳华"非遗掐丝珐琅体验活动献礼第115个国际劳动妇女节</a>
+                    <span class="news-date-related">[03-09]</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 滚动到顶部按钮 -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script src="js/script.js"></script>
+    <script>
+        // 滚动到顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 监听滚动事件，显示/隐藏滚动到顶部按钮
+        window.addEventListener('scroll', function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Header滚动效果
+         function updateHeaderOnScroll() {
+             const headerContainer = document.getElementById('headerContainer');
+             if (window.pageYOffset > 100) {
+                 headerContainer.classList.add('scrolled');
+             } else {
+                 headerContainer.classList.remove('scrolled');
+             }
+         }
+
+         // 监听滚动事件，更新header状态和滚动按钮
+         window.addEventListener('scroll', function() {
+             const scrollToTopBtn = document.getElementById('scrollToTop');
+             
+             // 更新滚动到顶部按钮
+             if (window.pageYOffset > 300) {
+                 scrollToTopBtn.classList.add('show');
+             } else {
+                 scrollToTopBtn.classList.remove('show');
+             }
+             
+             // 更新header样式
+             updateHeaderOnScroll();
+         });
+
+         // 鼠标滚轮事件监听
+         window.addEventListener('wheel', function(e) {
+             // 如果向上滚动且已经在顶部附近，可以添加特殊效果
+             if (e.deltaY < 0 && window.pageYOffset < 100) {
+                 // 向上滚动到顶部的特殊处理
+                 window.scrollTo({
+                     top: 0,
+                     behavior: 'smooth'
+                 });
+             }
+         });
+    </script>
+</body>
+</html>
