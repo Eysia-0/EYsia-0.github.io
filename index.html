@@ -216,9 +216,6 @@
             font-size: 15px; /* 新闻条目字号 */
             line-height: 1.8;
             margin-bottom: 12px;
-            white-space: nowrap; /* 强制单行显示 */
-            overflow: hidden; /* 超出部分隐藏 */
-            text-overflow: ellipsis; /* 超出部分显示省略号 */
             padding: 6px 0 6px 25px; /* 调整内边距，为图标留出空间 */
             border-bottom: 1px dashed #ccc; /* 条目间分隔线 */
             transition: color 0.3s ease, background-image 0.3s ease;
@@ -226,6 +223,23 @@
             background-repeat: no-repeat;
             background-position: left center; /* 图标居左垂直居中 */
             background-size: 8px 8px; /* 图标大小 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .news-container li .news-title {
+            flex: 1;
+            white-space: nowrap; /* 强制单行显示 */
+            overflow: hidden; /* 超出部分隐藏 */
+            text-overflow: ellipsis; /* 超出部分显示省略号 */
+            margin-right: 10px;
+        }
+        
+        .news-container li .news-date {
+            flex-shrink: 0; /* 不允许缩小 */
+            color: #666;
+            font-size: 13px;
         }
         .news-container li:hover {
             color: #d32f2f; /* 鼠标悬停时文字颜色变化 */
@@ -517,7 +531,7 @@
             width: 100%;
             max-width: 1200px;
             gap: 40px;
-            height: 80vh;
+            height: 51vh;
         }
 
         .section3-left {
@@ -528,14 +542,142 @@
 
         .section3-right {
             width: 60%; /* 右边占3/5 */
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             padding: 30px;
             display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+        
+        .research-title {
+            color: #1a237e;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #3949ab;
+            padding-bottom: 10px;
+        }
+        
+        .research-carousel {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 0 50px; /* 为箭头留出空间 */
+        }
+        
+        .research-item {
+            display: none;
+            height: 100%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .research-item.active {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .research-image {
+            width: 40%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .research-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .research-text {
+            width: 60%;
+            padding-left: 20px;
+        }
+        
+        .research-text h4 {
+            color: #1a237e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .research-text p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .research-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .research-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(26, 35, 126, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .research-dot.active {
+            background-color: #1a237e;
+        }
+        
+        .research-dot:hover {
+            background-color: #3949ab;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background-color: rgba(26, 35, 126, 0.8);
+            border: 2px solid #1a237e;
+            border-radius: 6px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel-arrow:hover {
+            background-color: #1a237e;
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .carousel-arrow-left {
+            left: 8px;
+        }
+        
+        .carousel-arrow-right {
+            right: 8px;
+        }
+        
+        .carousel-arrow span {
+            line-height: 1;
+            user-select: none;
         }
 
         .section3-news-container {
@@ -572,16 +714,32 @@
             font-size: 16px;
             line-height: 1.8;
             margin-bottom: 15px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             padding: 8px 0 8px 30px;
-            border-bottom: 1px dashed #ccc;
             transition: color 0.3s ease, background-image 0.3s ease;
             background-image: url('img/point2.png');
             background-repeat: no-repeat;
             background-position: left center;
             background-size: 10px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(26, 35, 126, 0.1);
+        }
+        
+        .section3-news-container .news-title {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 10px;
+        }
+        
+        .section3-news-container .news-date {
+            flex-shrink: 0;
+            color: #666;
+            font-size: 12px;
+            min-width: 60px;
+            text-align: right;
         }
 
         .section3-news-container li:hover {
@@ -851,17 +1009,17 @@
                 <div class="news-container">
                     <h4>学院新闻</h4>
                     <ul>
-                        <li>教师第一、二党支部开展联动活动 ——"迎评应会知识学习"周某日活动 [05-28]</li>
-                        <li>我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖 [05-14]</li>
-                        <li>2023级硕士生赵德奎同学论文被人工智能领域顶级会议 IJCAI 2025接收 [05-07]</li>
-                        <li>智能信息处理团队四篇论文入选人工智能领域顶级会议 IJCAI 2025 [04-30]</li>
-                        <li>2022级硕士生任蒙恩在国际期刊Neurocomputing发表论文 [03-27]</li>
-                        <li>我院成功举办"巧手传非遗，珐彩绽芳华"非遗掐丝珐琅体验活动献礼第115个国际劳动妇女节 [03-09]</li>
-                        <li>直聘教授+顶尖基础教育资源|东北师范大学诚邀全球英才依托申报 [03-03]</li>
-                        <li>我院成功举办"春风有'信'、'科'映朝阳" 2025新年联欢会 [01-10]</li>
-                        <li>信息科学与技术学院校友返校招聘 共促毕业生高质量就业 [01-08]</li>
-                        <li>信息科学与技术学院举办2024年度颁奖典礼暨"蛇舞新春 智绘未来"元旦晚会 [12-26]</li>
-                        <li>AI for Science团队在生物信息学领域顶级期刊Bioinformatics发表系列论文 [12-25]</li>
+                        <li><span class="news-title">教师第一、二党支部开展联动活动 ——"迎评应会知识学习"周某日活动</span><span class="news-date">[05-28]</span></li>
+                        <li><span class="news-title">我院在第十届"中国高校计算机大赛-团体程序设计天梯赛"中荣获全国一等奖</span><span class="news-date">[05-14]</span></li>
+                        <li><span class="news-title">2023级硕士生赵德奎同学论文被人工智能领域顶级会议 IJCAI 2025接收</span><span class="news-date">[05-07]</span></li>
+                        <li><span class="news-title">智能信息处理团队四篇论文入选人工智能领域顶级会议 IJCAI 2025</span><span class="news-date">[04-30]</span></li>
+                        <li><span class="news-title">2022级硕士生任蒙恩在国际期刊Neurocomputing发表论文</span><span class="news-date">[03-27]</span></li>
+                        <li><span class="news-title">我院成功举办"巧手传非遗，珐彩绽芳华"非遗掐丝珐琅体验活动献礼第115个国际劳动妇女节</span><span class="news-date">[03-09]</span></li>
+                        <li><span class="news-title">直聘教授+顶尖基础教育资源|东北师范大学诚邀全球英才依托申报</span><span class="news-date">[03-03]</span></li>
+                        <li><span class="news-title">我院成功举办"春风有'信'、'科'映朝阳" 2025新年联欢会</span><span class="news-date">[01-10]</span></li>
+                        <li><span class="news-title">信息科学与技术学院校友返校招聘 共促毕业生高质量就业</span><span class="news-date">[01-08]</span></li>
+                        <li><span class="news-title">信息科学与技术学院举办2024年度颁奖典礼暨"蛇舞新春 智绘未来"元旦晚会</span><span class="news-date">[12-26]</span></li>
+                        <li><span class="news-title">AI for Science团队在生物信息学领域顶级期刊Bioinformatics发表系列论文</span><span class="news-date">[12-25]</span></li>
                     </ul>
                 </div>
             </div>
@@ -957,19 +1115,109 @@
             <div class="section3-content">
                 <div class="section3-left">
                     <div class="section3-news-container">
-                        <h4>学院动态</h4>
+                        <h4>就业信息</h4>
                         <ul>
-                            <li>新闻标题1 - 待补充</li>
-                            <li>新闻标题2 - 待补充</li>
-                            <li>新闻标题3 - 待补充</li>
-                            <li>新闻标题4 - 待补充</li>
-                            <li>新闻标题5 - 待补充</li>
-                            <li>新闻标题6 - 待补充</li>
+                            <li><span class="news-title">中国海洋大学档案馆专业技术人员招聘启事</span><span class="news-date">[03-21]</span></li>
+                            <li><span class="news-title">中国联通广东省分公司2024届春招</span><span class="news-date">[03-21]</span></li>
+                            <li><span class="news-title">长春市面向2024年应届毕业生开展"强师计划"招聘教师公告（4号）</span><span class="news-date">[03-07]</span></li>
+                            <li><span class="news-title">北森云计算机有限公司毕业生招聘公告</span><span class="news-date">[03-07]</span></li>
+                            <li><span class="news-title">西安市人社局2024届毕业生选聘公告</span><span class="news-date">[12-11]</span></li>
+                            <li><span class="news-title">明阳集团2024全球校园招聘</span><span class="news-date">[12-11]</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="section3-right">
-                    右侧内容区域 - 待添加
+                    <h3 class="research-title">科研动态</h3>
+                    <div class="research-carousel">
+                        <button class="carousel-arrow carousel-arrow-left" onclick="previousResearchSlide()">
+                            <span>‹</span>
+                        </button>
+                        <button class="carousel-arrow carousel-arrow-right" onclick="nextResearchSlide()">
+                            <span>›</span>
+                        </button>
+                        <div class="research-item active">
+                            <div class="research-image">
+                                <img src="img/pit7.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（七）</h4>
+                                <p>从 DeepSeek 的兴起看深化推理模型的必要性</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit6.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（六）</h4>
+                                <p>《理论世界的门外一瞥》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit5.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（五）</h4>
+                                <p>《6G Mobile Communication Technology》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit4.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（四）</h4>
+                                <p>《量子机器学习算法》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit3.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（三）</h4>
+                                <p>《带权重标签割问题的近似算法》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit2.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（二）</h4>
+                                <p>《On the query complexity of sampling from non-log-concave distributions》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit1.png" alt="学术论坛图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>2025年信息科学学术论坛（一）</h4>
+                                <p>《Machine Learning-Based Hybrid Approaches for Combinatorial Optimization》</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <div class="research-image">
+                                <img src="img/pit8.jpg" alt="学术报告图片">
+                            </div>
+                            <div class="research-text">
+                                <h4>学术报告</h4>
+                                <p>我院邀请上海财经大学陆品燕教授做题为"理论计算机"的线上学术报告</p>
+                            </div>
+                        </div>
+                        <div class="research-indicators">
+                            <span class="research-dot active" data-slide="0"></span>
+                            <span class="research-dot" data-slide="1"></span>
+                            <span class="research-dot" data-slide="2"></span>
+                            <span class="research-dot" data-slide="3"></span>
+                            <span class="research-dot" data-slide="4"></span>
+                            <span class="research-dot" data-slide="5"></span>
+                            <span class="research-dot" data-slide="6"></span>
+                            <span class="research-dot" data-slide="7"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1176,6 +1424,81 @@
         // 页面加载完成后开始轮播
         window.addEventListener('load', () => {
             startCarousel();
+        });
+        
+        // 科研动态轮播图功能
+        let currentResearchSlide = 0;
+        const totalResearchSlides = 8;
+        const researchItems = document.querySelectorAll('.research-item');
+        const researchDots = document.querySelectorAll('.research-dot');
+        let researchInterval;
+        
+        function updateResearchCarousel(slideIndex) {
+            // 更新轮播项显示
+            researchItems.forEach((item, index) => {
+                item.classList.toggle('active', index === slideIndex);
+            });
+            
+            // 更新指示器
+            researchDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+            
+            currentResearchSlide = slideIndex;
+        }
+        
+        function nextResearchSlide() {
+            const nextIndex = (currentResearchSlide + 1) % totalResearchSlides;
+            updateResearchCarousel(nextIndex);
+            stopResearchCarousel();
+            // 延迟重新开始自动轮播，给用户一些时间
+            setTimeout(() => {
+                startResearchCarousel();
+            }, 2000); // 2秒后重新开始自动轮播
+        }
+        
+        function previousResearchSlide() {
+            const prevIndex = (currentResearchSlide - 1 + totalResearchSlides) % totalResearchSlides;
+            updateResearchCarousel(prevIndex);
+            stopResearchCarousel();
+            // 延迟重新开始自动轮播，给用户一些时间
+            setTimeout(() => {
+                startResearchCarousel();
+            }, 2000); // 2秒后重新开始自动轮播
+        }
+        
+        function startResearchCarousel() {
+            researchInterval = setInterval(nextResearchSlide, 4000); // 每4秒切换一次
+        }
+        
+        function stopResearchCarousel() {
+            clearInterval(researchInterval);
+        }
+        
+        // 点击指示器切换科研轮播图
+        researchDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateResearchCarousel(index);
+                stopResearchCarousel();
+                // 延迟重新开始自动轮播
+                setTimeout(() => {
+                    startResearchCarousel();
+                }, 2000); // 2秒后重新开始自动轮播
+            });
+        });
+        
+        // 鼠标悬停时停止科研轮播图自动切换
+        const researchCarousel = document.querySelector('.research-carousel');
+        if (researchCarousel) {
+            researchCarousel.addEventListener('mouseenter', stopResearchCarousel);
+            researchCarousel.addEventListener('mouseleave', startResearchCarousel);
+        }
+        
+        // 页面加载完成后开始科研轮播图
+        window.addEventListener('load', () => {
+            if (researchItems.length > 0) {
+                startResearchCarousel();
+            }
         });
     </script>
 </body>
